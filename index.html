@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Azure Speech to Text Live Transcription</title>
+  </head>
+  <body>
+    <!-- Include the Azure Speech to Text JavaScript SDK -->
+    <script src="https://cdn.speechly.com/speechly-sdk.js"></script>
+
+    <!-- Add a div element to display the transcribed text -->
+    <div id="output"></div>
+
+    <script>
+      // Replace YOUR_API_KEY with your Azure Speech to Text API key
+      const apiKey = "YOUR_API_KEY";
+
+      // Create a new instance of the Azure Speech to Text client
+      const speechClient = new Speechly.Client(apiKey);
+
+      // Start listening to audio from the microphone and transcribing it to text
+      speechClient.start();
+
+      // Display the transcribed text on the page
+      speechClient.onTextCaptured((text) => {
+        document.getElementById("output").innerHTML = text;
+      });
+    </script>
+  </body>
+</html>
